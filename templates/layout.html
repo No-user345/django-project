@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+            Django App
+        {% endblock %}
+    </title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/main.js' %}" defer></script>
+</head>
+<body>
+    <nav>
+        {% comment %} <a href="/">
+            <span role="img" aria-label="Home">Home</span>
+        </a> | 
+        <a href="/about">
+            <span role="img" aria-label="About">About</span>
+        </a> |  {% endcomment %}
+        <a href="{% url 'posts:list' %}">
+            <span role="img" aria-label="Posts list">Posts</span>
+        </a> |
+        
+        {% if user.is_authenticated %}
+            <a href="{% url 'posts:new-post' %}">
+                <span role="img" aria-label="New Post">New Post</span>
+            </a> |
+            <form class="logout" action="{% url 'Users:logout' %}" method="post">
+                {% csrf_token %}
+                <button class="logout-button" >Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'Users:register' %}">
+                <span role="img" aria-label="Register">Register</span>
+            </a> |
+            <a href="{% url 'Users:login' %}">
+                <span role="img" aria-label="Login">Login</span>
+            </a> 
+        {% endif %}
+        
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>

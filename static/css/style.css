@@ -1,0 +1,214 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* BASE */
+body {
+    background-color: #001a00;
+    color: #00ff88;
+    font-family: "Courier New", monospace;
+    line-height: 1.6;
+}
+
+/* NAVBAR */
+nav {
+    padding: 1rem;
+    background-color: #003d2b;
+    font-size: 2rem;
+    text-shadow: 0 0 5px #00ff88;
+}
+
+/* LAYOUT */
+main {
+    padding: 1rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* TEXT */
+h2 {
+    font-size: 2rem;
+    text-shadow: 0 0 8px #00ff88;
+}
+
+p {
+    font-size: 1.2rem;
+    text-shadow: 0 0 3px #00ff88;
+}
+
+/* LINKS */
+a {
+    text-decoration: none;
+    color: #66ffcc;
+}
+
+a:hover {
+    opacity: 0.8;
+}
+
+/* IMAGE */
+.banner {
+    display: block;
+    width: 100%;
+    max-width: 800px;
+    border: 2px solid #00ff88;
+    box-shadow: 0 0 10px #00ff88;
+}
+
+/* SCANLINES OVERLAY */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    background: linear-gradient(
+        rgba(20, 20, 20, 0) 66%, 
+        rgba(0, 0, 0, 0.15) 33%
+    );
+
+    background-size: 100% 5px;
+    z-index: 9999;
+    pointer-events: none;
+
+    animation: scanlines 1s linear infinite, flicker 0.15s infinite;
+}
+
+/* ANIMATIONS */
+@keyframes scanlines {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 0 15px;
+    }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.95; }
+    50% { opacity: 1; }
+    100% { opacity: 0.97; }
+}
+
+/* BLINKING CURSOR */
+.cursor::after {
+    content: "_";
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}
+
+/* FORM CONTAINER */
+.form-with-validation {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+}
+
+/* INPUT FIELDS (Django renders these automatically) */
+.form-with-validation input {
+    background-color: #001a00;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    padding: 0.5rem;
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+
+    box-shadow: 0 0 5px #00ff88;
+    outline: none;
+}
+
+/* INPUT FOCUS EFFECT */
+.form-with-validation input:focus {
+    box-shadow: 0 0 10px #00ff88;
+}
+
+/* LABELS */
+.form-with-validation label {
+    text-shadow: 0 0 5px #00ff88;
+}
+
+/* ERROR MESSAGES (Django) */
+.form-with-validation .errorlist {
+    color: #ff4d4d;
+    list-style: none;
+    font-size: 0.9rem;
+}
+
+.form-with-validation input::placeholder {
+    color: #00ff88;
+    opacity: 0.5;
+}
+
+/* BUTTON */
+.form-submit {
+    background-color: transparent;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    padding: 0.6rem;
+    font-family: "Courier New", monospace;
+    font-size: 1rem;
+    cursor: pointer;
+
+    box-shadow: 0 0 5px #00ff88;
+    transition: all 0.2s ease;
+}
+
+/* BUTTON HOVER */
+.form-submit:hover {
+    background-color: #00ff88;
+    color: #001a00;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* BUTTON CLICK */
+.form-submit:active {
+    transform: scale(0.97);
+}
+
+
+.logout {
+    display: inline-block;
+}
+
+/* BUTTON */
+.logout-button {
+    font-size: 2rem;
+    background-color: transparent;
+    border: 2px solid #00ff88;
+    color: #00ff88;
+    padding: 0.4rem 0.8rem;
+    font-family: "Courier New", monospace;
+    cursor: pointer;
+
+    box-shadow: 0 0 5px #00ff88;
+    text-shadow: 0 0 5px #00ff88;
+
+    transition: all 0.2s ease;
+}
+
+/* HOVER EFFECT */
+.logout-button:hover {
+    background-color: #00ff88;
+    color: #001a00;
+    box-shadow: 0 0 15px #00ff88;
+}
+
+/* CLICK EFFECT */
+.logout-button:active {
+    transform: scale(0.95);
+}
